@@ -23,7 +23,7 @@ namespace PlatziEntityFramework.Model
 
         public virtual Category Category { get; set; }
 
-        [NotMapped]
+       // [NotMapped]
         public string Summary { get; set; }
     }
 }

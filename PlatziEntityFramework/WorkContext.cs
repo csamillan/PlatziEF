@@ -34,6 +34,8 @@ namespace PlatziEntityFramework
                 Work.Property(p => p.Priority);
                 Work.Property(p => p.DateCreate);
 
+                Work.Ignore(p => p.Summary); //Se utiliza cuando no qieres que un campo no lo mapee
+
             });
         }
     }
