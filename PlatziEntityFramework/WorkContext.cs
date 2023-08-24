@@ -3,12 +3,12 @@ using PlatziEntityFramework.Model;
 
 namespace PlatziEntityFramework
 {
-    public class TaskContext: DbContext
+    public class WorkContext: DbContext
     {
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Work> Works { get; set; }
 
-        public TaskContext(DbContextOptions<TaskContext> options) : base(options) { }
+        public WorkContext(DbContextOptions<WorkContext> options) : base(options) { }
     }
 }

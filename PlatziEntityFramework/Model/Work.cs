@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PlatziEntityFramework.Model
 {
-    public class task
+    public class Work
     {
         [Key]
-        public Guid TaskId { get; set; }
+        public Guid WorkId { get; set; }
 
         [ForeignKey("CategoryId")]
         public Guid CategoryId { get; set; }

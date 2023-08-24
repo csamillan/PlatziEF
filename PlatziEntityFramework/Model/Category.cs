@@ -13,7 +13,7 @@ namespace PlatziEntityFramework.Model
 
         public string Description { get; set; }
 
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<Work> Works { get; set; }
 
     }
 }
