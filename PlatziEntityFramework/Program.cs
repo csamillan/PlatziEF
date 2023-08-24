@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 //builder.Services.AddDbContext<WorkContext>(p => p.UseInMemoryDatabase("TaskDB")); //Configurar para usar base de datos en memoria
-builder.Services.AddSqlServer<WorkContext>("Data Source=localhost;Initial Catalog=WorkDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+builder.Services.AddSqlServer<WorkContext>(builder.Configuration.GetConnectionString("cnWork"));
 
 var app = builder.Build();
 
