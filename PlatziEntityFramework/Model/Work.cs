@@ -5,14 +5,14 @@ namespace PlatziEntityFramework.Model
 {
     public class Work
     {
-        [Key]
+        //[Key]
         public Guid WorkId { get; set; }
 
         [ForeignKey("CategoryId")]
         public Guid CategoryId { get; set; }
 
-        [Required]
-        [MaxLength(200)]
+        //[Required]
+        //[MaxLength(200)]
         public string Title { get; set; }
 
         public string Description { get; set; }
