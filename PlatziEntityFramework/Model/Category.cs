@@ -1,9 +1,14 @@
-﻿namespace PlatziEntityFramework.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PlatziEntityFramework.Model
 {
     public class Category
     {
-        public Guid CategoryID { get; set; }   
-        
+        [Key]
+        public Guid CategoryID { get; set; }
+
+        [Required]
+        [MaxLength(150)]
         public string Name { get; set; }    
 
         public string Description { get; set; }
