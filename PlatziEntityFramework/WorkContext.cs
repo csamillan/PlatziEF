@@ -13,7 +13,7 @@ namespace PlatziEntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>(Category => 
+            modelBuilder.Entity<Category>(Category =>
             {
                 Category.ToTable("Category");
                 Category.HasKey(p => p.CategoryID);
@@ -22,6 +22,19 @@ namespace PlatziEntityFramework
                 Category.Property(p => p.Description);
             });
 
+            modelBuilder.Entity<Work>(Work =>
+            {
+                Work.ToTable("Work");
+                Work.HasKey(p => p.WorkId);
+
+                Work.HasOne(p => p.Category).WithMany(p => p.Works).HasForeignKey(p => p.CategoryId); //HasOne y withMany hace referencia a la coleccion creada en categoria y relacionarla con tarea para asi crear una clave foranea
+
+                Work.Property(p => p.Title).IsRequired().HasMaxLength(200);
+                Work.Property(p => p.Description);
+                Work.Property(p => p.Priority);
+                Work.Property(p => p.DateCreate);
+
+            });
         }
     }
 }
