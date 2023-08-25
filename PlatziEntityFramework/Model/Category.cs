@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace PlatziEntityFramework.Model
 {
@@ -15,6 +16,7 @@ namespace PlatziEntityFramework.Model
 
         public int Weigth { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Work> Works { get; set; }
 
     }

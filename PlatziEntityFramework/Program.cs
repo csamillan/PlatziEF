@@ -34,4 +34,9 @@ app.MapGet("/dbconexion", async ([FromServices] WorkContext dbContext) =>
     return Results.Ok("Data Base in Memory: " + dbContext.Database.IsInMemory());
 });
 
+app.MapGet("/api/works", async ([FromServices] WorkContext dbcontext) =>
+{
+    return Results.Ok(dbcontext.Works.Include(p => p.Category).Where(p => p.Priority == Priority.Low));
+});
+
 app.Run();
