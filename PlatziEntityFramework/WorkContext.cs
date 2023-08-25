@@ -31,9 +31,10 @@ namespace PlatziEntityFramework
                 Work.HasOne(p => p.Category).WithMany(p => p.Works).HasForeignKey(p => p.CategoryId); //HasOne y withMany hace referencia a la coleccion creada en categoria y relacionarla con tarea para asi crear una clave foranea
 
                 Work.Property(p => p.Title).IsRequired().HasMaxLength(200);
-                Work.Property(p => p.Description);
+                Work.Property(p => p.Description).HasMaxLength(200);
                 Work.Property(p => p.Priority);
                 Work.Property(p => p.DateCreate);
+                Work.Property(p => p.comentary).HasMaxLength(150);
 
                 Work.Ignore(p => p.Summary); //Se utiliza cuando no qieres que un campo no lo mapee
 

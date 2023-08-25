@@ -25,6 +25,8 @@ namespace PlatziEntityFramework.Model
 
        // [NotMapped]
         public string Summary { get; set; }
+
+        public string comentary { get; set; }
     }
 }
 
