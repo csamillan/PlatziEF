@@ -55,4 +55,24 @@ app.MapPost("/api/insert", async ([FromServices] WorkContext dbcontext, [FromBod
 
 });
 
+app.MapPut("/api/update/{id}", async ([FromServices] WorkContext dbcontext, [FromBody] Work Work, [FromRoute] Guid id) =>
+{
+    var WorkCurrent = dbcontext.Works.Find(id);
+
+    if(WorkCurrent != null)
+    {
+        WorkCurrent.CategoryId = Work.CategoryId;
+        WorkCurrent.Title = Work.Title;
+        WorkCurrent.Priority = Work.Priority;
+        WorkCurrent.Description = Work.Description;
+
+        await dbcontext.SaveChangesAsync();
+
+        return Results.Ok();
+    }
+
+    return Results.NotFound();
+
+});
+
 app.Run();
