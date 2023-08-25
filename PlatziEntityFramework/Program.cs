@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlatziEntityFramework;
+using PlatziEntityFramework.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,22 @@ app.MapGet("/dbconexion", async ([FromServices] WorkContext dbContext) =>
 
 app.MapGet("/api/works", async ([FromServices] WorkContext dbcontext) =>
 {
-    return Results.Ok(dbcontext.Works.Include(p => p.Category).Where(p => p.Priority == Priority.Low));
+    return Results.Ok(dbcontext.Works.Include(p => p.Category));
+});
+
+app.MapPost("/api/insert", async ([FromServices] WorkContext dbcontext, [FromBody] Work Work) =>
+{
+    Work.WorkId = Guid.NewGuid();
+    Work.DateCreate = DateTime.Now;
+
+    await dbcontext.AddAsync(Work);
+
+    //await dbcontext.Works.AddAsync(Work);
+
+    await dbcontext.SaveChangesAsync();
+
+    return Results.Ok();
+
 });
 
 app.Run();
