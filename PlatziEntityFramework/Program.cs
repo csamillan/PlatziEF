@@ -75,4 +75,19 @@ app.MapPut("/api/update/{id}", async ([FromServices] WorkContext dbcontext, [Fro
 
 });
 
+app.MapDelete("/api/delete/{id}", async([FromServices] WorkContext dbcontext, [FromRoute] Guid id) =>
+{
+    var WorkCurrent = dbcontext.Works.Find(id);
+
+    if(WorkCurrent != null)
+    {
+        dbcontext.Remove(WorkCurrent);
+        await dbcontext.SaveChangesAsync();
+
+        return Results.Ok();
+    }
+
+    return Results.NotFound();
+});
+
 app.Run();
