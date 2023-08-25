@@ -20,6 +20,7 @@ namespace PlatziEntityFramework
 
                 Category.Property(p => p.Name).IsRequired().HasMaxLength(150);
                 Category.Property(p => p.Description);
+                Category.Property(p => p.Weigth);
             });
 
             modelBuilder.Entity<Work>(Work =>

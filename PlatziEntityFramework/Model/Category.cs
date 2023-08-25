@@ -13,6 +13,8 @@ namespace PlatziEntityFramework.Model
 
         public string Description { get; set; }
 
+        public int Weigth { get; set; }
+
         public virtual ICollection<Work> Works { get; set; }
 
     }
